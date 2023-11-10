@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div style="background-color: rgb(54, 112, 238); width: 750px;  margin: auto; text-align: center; border-radius: 10px; border-end-start-radius: 10px;
+    border-end-end-radius: 10px; box-shadow: 1px 1px 5px;">
+        <h1 style="padding-top: 50px; color: aliceblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">TODO LIST</h1>
+        <input type="text" id="item" placeholder="Write your todo list here...">
+        <button onclick="add()">Add</button>
+        <div style="background-color: aliceblue; border-radius: 100px; border-end-start-radius: 10px;
+        border-end-end-radius: 10px; margin-top: 50px; padding-bottom: 20px;">
+
+            <ul style="padding-top: 70px; text-align: start; padding-left: 120px;" id="ul">
+
+            </ul>
+        </div>
+           
+      
+    </div>
+</body>
+<script>
+    
+    function add(){
+        let item=document.getElementById('item').value
+        let list=document.createElement('li')
+        let text=document.createTextNode(item)
+        list.appendChild(text)
+        let ul=document.getElementById('ul')
+        ul.appendChild(list)
+        let span=document.createElement('span')
+        let close=document.createTextNode("x")
+        span.appendChild(close)
+        list.appendChild(span)
+
+        span.addEventListener('click',function(){
+            ul.removeChild(list)
+        })
+
+    }
+</script>
+</html>
+<style>
+    input{
+        height: 40px;
+        width: 400px;
+        border-radius: 10px;
+        border-width: 0cap;
+        padding-left: 30px;
+        margin-top: 30px;
+    }
+    button{
+        height: 40px;
+        width: 70px;
+        border-radius: 10px;
+        border-width: 0cap;
+        margin-left: 10px;
+    }
+    li{
+        margin-top: 10px;
+        background-color: aliceblue;
+        list-style-type: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        box-shadow: 1px 1px 5px;
+        width: 500px;
+        padding-left: 20px;
+        position: relative;
+        font-size: x-large;
+        border-radius: 10px;
+    }
+    span{
+        position: absolute;
+        left: 465px;
+        top: 5px;
+        color: red;
+        font-size: x-large;
+        padding:15px;
+    }
+    span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: red;
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+    }
+  span:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px red;
+    }
+    span:hover{
+        color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px red;
+    text-shadow: 0 0 5px red;
+    background-color: red;
+    }
+    ul{
+        overflow-y: scroll;
+        height: 370px;
+    }
+    ul::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+
+
+.container::-webkit-scrollbar 

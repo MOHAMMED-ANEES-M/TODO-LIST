@@ -4,95 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-    <div style="background-color: rgb(54, 112, 238); width: 750px;  margin: auto; text-align: center; border-radius: 10px; border-end-start-radius: 10px;
-    border-end-end-radius: 10px; box-shadow: 1px 1px 5px;">
-        <h1 style="padding-top: 50px; color: aliceblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">TODO LIST</h1>
-        <input type="text" id="item" placeholder="Write your todo list here...">
-        <button onclick="add()">Add</button>
-        <div style="background-color: aliceblue; border-radius: 100px; border-end-start-radius: 10px;
-        border-end-end-radius: 10px; margin-top: 50px; padding-bottom: 20px;">
+   
+    <div class="container overflow-hidden text-center bg-primary mt-5  w-50 div1" style="border-radius: 10px;">
+        <div class="row gx-5">
 
-            <ul style="padding-top: 70px; text-align: start; padding-left: 120px;" id="ul">
+          <div class="col">
+           <div class="p-3 mt-4 " style="font-size: xx-large; font-weight: bold; color:aliceblue; font-family: Verdana, Geneva, Tahoma, sans-serif;">TODO LIST</div>
+           <div class="m-auto ">
+              <div class="d-flex flex-wrap  justify-content-center">
+                <div class="p-3 w-50 col-sm-12 "><input type="text" class="form-control w-100  " id="item" placeholder="Write your todo list here..." required></div>
+                  <div class="p-3 "><button onclick="add()" type="button" class="btn btn-light">ADD</button></div>
+              </div> 
+           </div>
+           <div class="container overflow-hidden text-center div2  ">
+            <div class="row gx-5 ">
+              <div class="col  ">
+               <div style="border-radius: 10px;">
+                <ul id="ul">
 
-            </ul>
+                </ul>
+            </div>
+              </div>
+            </div>
+          </div>
+               
+            
+          </div>
+
         </div>
-           
-      
+      </div>
     </div>
+
 </body>
 <script>
-    
     function add(){
-        let item=document.getElementById('item').value
-        let list=document.createElement('li')
-        let text=document.createTextNode(item)
-        list.appendChild(text)
-        let ul=document.getElementById('ul')
-        ul.appendChild(list)
-        let span=document.createElement('span')
-        let close=document.createTextNode("x")
-        span.appendChild(close)
-        list.appendChild(span)
-
-        span.addEventListener('click',function(){
-            ul.removeChild(list)
+       let item=document.getElementById('item').value
+       if (item=="") {
+        alert("This field is required")
+       } else {
+         let list=document.createElement('li')
+         let text=document.createTextNode(item)
+       list.appendChild(text)
+       let ul=document.getElementById('ul')
+       ul.appendChild(list)
+       let span=document.createElement('span')
+       let close=document.createTextNode('x')
+       span.appendChild(close)
+       list.appendChild(span)
+       
+       span.addEventListener('click',function(){
+         ul.removeChild(list)
         })
+      }
+       }
+       
+    
 
-    }
+    
 </script>
 </html>
 <style>
-    input{
-        height: 40px;
-        width: 400px;
-        border-radius: 10px;
-        border-width: 0cap;
-        padding-left: 30px;
-        margin-top: 30px;
+    .div2{
+        position: absolute;
+        top: 200px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        background-color: rgb(220, 238, 255);
     }
-    button{
-        height: 40px;
-        width: 70px;
-        border-radius: 10px;
-        border-width: 0cap;
-        margin-left: 10px;
+    .div1{
+        position: relative;
+        height: 650px;
+        box-shadow:
+  0.6px 0.6px 1.4px rgba(0, 0, 0, 0.15),
+  1.3px 1.3px 3.3px rgba(0, 0, 0, 0.108),
+  2.5px 2.5px 6.3px rgba(0, 0, 0, 0.089),
+  4.5px 4.5px 11.2px rgba(0, 0, 0, 0.075),
+  8.4px 8.4px 20.9px rgba(0, 0, 0, 0.061),
+  20px 20px 50px rgba(0, 0, 0, 0.042)
+;
+    }
+    @media only screen and (min-width:400px) and (max-width: 500px){
+      .div2{
+        top: 250px;
+    }
+      h1{
+        font-size: medium;
+      }
+      ul{
+        margin-left: 0%;
+      }
+    }
+    @media only screen and (max-width: 400px){
+      .div2{
+        top: 300px;
+    }
+      h1{
+        font-size: medium;
+      }
+      ul{
+        margin-left: 0%;
+      }
     }
     li{
-        margin-top: 10px;
-        background-color: aliceblue;
+        margin-top: 2px;
+        text-align: start;
+        background-color: white;
         list-style-type: none;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        box-shadow: 1px 1px 5px;
-        width: 500px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        width: 80%;
         padding-left: 20px;
         position: relative;
-        font-size: x-large;
-        border-radius: 10px;
+        font-size: medium;
+        border-radius: 5px;
+        box-shadow:
+  0px 1.7px 3.4px -13px rgba(0, 0, 0, 0.022),
+  0px 4.3px 8.7px -13px rgba(0, 0, 0, 0.031),
+  0px 8.9px 17.7px -13px rgba(0, 0, 0, 0.039),
+  0px 18.3px 36.5px -13px rgba(0, 0, 0, 0.048),
+  0px 50px 100px -13px rgba(0, 0, 0, 0.07)
+;
     }
+    li:hover{
+      transition: .5s;
+      transform: scale(1.1);
+    }
+    li.has-transition {
+  transition: transform 150ms ease-in-out;
+}
     span{
         position: absolute;
-        left: 465px;
-        top: 5px;
+        left: 460px;
+        top: 2px;
         color: red;
-        font-size: x-large;
-        padding:15px;
-    }
-    span::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: red;
-    transition: .5s;
-    transform: scale(.9);
-    z-index: -1;
+        font-size: medium;
+        padding:5px;
     }
   span:hover::before {
     transform: scale(1.1);
@@ -107,11 +159,10 @@
     ul{
         overflow-y: scroll;
         height: 370px;
+        margin-left: 90px;
+        margin-top: 60px;
     }
     ul::-webkit-scrollbar{
         display: none;
     }
 </style>
-
-
-.container::-webkit-scrollbar 
